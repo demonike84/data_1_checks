@@ -4,10 +4,10 @@
 # In[1]:
 
 
-# pip install matplotlib
-# pip install pandas
-# pip install numpy
-# pip install openpyxl
+#pip install matplotlib
+#pip install pandas
+#pip install numpy
+#pip install openpyxl
 
 
 # In[23]:
@@ -17,11 +17,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 Receiving = pd.read_excel('assets/Receiving.xlsx', sheet_name = 'Receiving_Data')
 Receiving = Receiving[Receiving['Games Played'] !=0]
-Receivers = (Receiving['Name'].unique())
+Receivers = Receiving['Name'].unique().tolist()
 
-print(Receivers)
+
+print (Receivers)
 
 Look = input ("What Receiver are you wanting to look up:")
+
 
 
 # In[24]:

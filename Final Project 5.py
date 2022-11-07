@@ -20,10 +20,14 @@ import numpy as np
 
 
 Receiving = pd.read_excel('assets/Receiving.xlsx', sheet_name = 'Receiving_Data')
+Receiving = Receiving.drop('Position', axis=1)
+#Receiving['Longest Reception'] = Receiving['Longest Reception'].str.replace(r'\W,"")
+
+#print(Receiving)
+
 Receiving2 = Receiving[Receiving['Receiving Yards'] > 750]
 Receiving2 = Receiving2[Receiving2.groupby('Name')['Name'].transform('size')>8]
 Receivers = [Receiving2['Name'].unique().tolist()]
-
 
 # In[2]:
 
@@ -46,8 +50,10 @@ sort = vals.sort_values(by=['Player'])
 
 # In[4]:
 
-
-print(sort.to_string(index=False))
+#print(sort.to_string(index=False))
+buffer_list = sort.to_string(index=False).splitlines()
+for line in buffer_list:
+    print(line)
 
 Look = input("What Receiver are you wanting to look up:")
 
